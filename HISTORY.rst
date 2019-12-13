@@ -2,6 +2,10 @@
 History
 =======
 
+0.1.1 (2019-12-13)
+------------------
+* Added CSV support for dynamic YAML markdown file generation.
+
 0.1.0 (2019-12-06)
 ------------------
 
