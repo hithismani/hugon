@@ -8,7 +8,7 @@ hugon
 
 An incredibly simple python script that makes working with archetypes in Hugo 0.5x much easier.
 
-.. image:: https://github.com/hithismani/hugon/images/hugon-single-file.gif
+.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-single-file.gif
     :alt: Hugon Sample Run
 
 * Free software: MIT license
@@ -76,7 +76,7 @@ How To Use (Generate From CSV)
 Syntax (CSV)
 ------------
 
-.. image:: https://github.com/hithismani/hugon/images/hugon-csv.gif
+.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-csv.gif
     :alt: Hugon Sample Run | CSV
 
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
