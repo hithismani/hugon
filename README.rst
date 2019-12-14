@@ -6,8 +6,10 @@ hugon
 .. image:: https://img.shields.io/pypi/v/hugon.svg
         :target: https://pypi.python.org/pypi/hugon
 
-
 An incredibly simple python script that makes working with archetypes in Hugo 0.5x much easier.
+
+.. image:: https://github.com/hithismani/hugon/images/hugon-single-file.gif
+    :alt: Hugon Sample Run
 
 * Free software: MIT license
 
@@ -35,6 +37,7 @@ Requirements
 
 How To Use (Normal)
 -------------------
+
 1) pip install hugon
 2) cd Into your hugo initialized folder.
 3) run the command 'hugon -name "N3w F!le" -arch "default" -sequence "5"
@@ -72,6 +75,9 @@ How To Use (Generate From CSV)
 
 Syntax (CSV)
 ------------
+
+.. image:: https://github.com/hithismani/hugon/images/hugon-csv.gif
+    :alt: Hugon Sample Run | CSV
 
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Column Name | Required | Purpose                                                                                                                                                                           |

@@ -117,7 +117,7 @@ def run(args):
             filename = slugify(args.filename,separator)
             sequence = 0
             if args.sequence:
-                sequence = args.sequence
+                sequence = int(args.sequence)
             separator = "-"
             if args.separator:
                 separator = args.separator
@@ -149,7 +149,7 @@ def main():
     parser.add_argument("-archetype",help="Enter Archetype" ,dest="arch", type=str, required=False)
     parser.add_argument("-name",help="Enter File Name" ,dest="filename", type=str, required=False)
     parser.add_argument("-csvpull",help="Let's you pull a csv from the existing directory. (Set Yes/No)" ,dest="csv", type=str, required=False)
-    parser.add_argument("-sequence",help="Enter Sequence Number" ,dest="sequence", required=False)
+    parser.add_argument("-sequence",help="Enter Sequence Number" ,dest="sequence", type=str,required=False)
     parser.add_argument("-separator",help="Enter Custom separator" ,dest="separator", type=str, required=False)
     parser.add_argument("-prefix",help="Enter Custom Prefix (if using another Hugo CLI)" ,dest="prefix", type=str, required=False)
     parser.set_defaults(func=run)
