@@ -72,12 +72,15 @@ How To Use (Generate From CSV)
 1) Create a 'data.csv' file in the root of your hugo site.
 2) Enter all the required variable fields (along with the required compulsory fields) as columns on your first row, and populate to your hearts content.
 3) Run command 'hugon -csv yes'
+4) If you'd like to overwrite your files without being prompted (Risky) just pass '-overwrite true' as an argument.
 
 Syntax (CSV)
 ------------
 
 .. image:: https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-csv.gif
     :alt: Hugon Sample Run | CSV
+
+Warning: Files would be modified the moment they're made. Mistakes cannot be undone.
 
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Column Name | Required | Purpose                                                                                                                                                                           |
