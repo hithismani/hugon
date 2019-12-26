@@ -22,7 +22,13 @@ def slugify(value, separator):
     and converts spaces to hyphens.
     """
     value = value.replace(".md","")
-    filename = (re.sub("[^\\w ]", "",  value)).strip().replace("  "," ").replace(" ",separator).lower()
+    if separator in value:
+        dup_remove_pattern=re.compile(r"("+separator+")\1{1,}",re.DOTALL)
+        filename = (re.sub("[^\\w ]", " ",  value)).strip().replace(" ",separator).lower()
+        filename = dup_remove_pattern.sub(r"\1",value).replace(" ","")
+    else:     
+        filename = (re.sub("[^\\w ]", "",  value)).strip().replace("  "," ").replace(" ",separator).lower()
+    
     print_message(Fore.GREEN, ("File Name For Entered String: " +filename))
     return filename
 

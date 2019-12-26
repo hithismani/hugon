@@ -4,7 +4,7 @@ hugon
 
 
 .. image:: https://img.shields.io/pypi/v/hugon.svg
-        :target: https://pypi.python.org/pypi/hugon
+    :target: https://pypi.python.org/pypi/hugon
 
 An incredibly simple (CLI) python script that makes working with archetypes in Hugo 0.5x much easier. 
 
@@ -15,18 +15,19 @@ An incredibly simple (CLI) python script that makes working with archetypes in 
 
 Why
 ----
+
 * When working with archetypes, the CLI expects us to mention the exact file name we want to create, instead of converting a provided string into a valid file name. 
 * Inability to create a sequence of files (Example, creating an FAQ’s Markdown Page with faq-1.md, faq-2.md, faq-3.md file names). We’re expected to enter them manually each time. 
-* When working with projects that require us to create multiple markdown files, we can’t add more than the “title” field to our markdown files. 
+* When working with projects that require us to create multiple markdown files, we can’t add more than the "title" field to our markdown files. 
 
 
 Features 
--------- 
+--------
 
-* Enter a string with as many special characters you wish to enter, the script will convert it into a suitable file name. Eg: “This new blog post I want to write!” in the command line would convert into “this-new-blog-post-i-want-to-write.md”. 
+* Enter a string with as many special characters you wish to enter, the script will convert it into a suitable file name. Eg: "This new blog post I want to write!" in the command line would convert into "this-new-blog-post-i-want-to-write.md". 
 * Enter the archetype you wish to enter, the script will check if the archetype exists. If it doesn’t exist, Hugo CLI will prompt you with an error. 
 * Create multiple markdown files and automatically populate the variables + content fields from a local CSV! (YAML format front matter only) 
-* Let’s you use a custom prefix CLI if you’re using any other CLI that handshakes with hugo. Only changes prefix that could replace the “hugo new” function 
+* Let’s you use a custom prefix CLI if you’re using any other CLI that handshakes with hugo. Only changes prefix that could replace the "hugo new" function 
 * Enter the amount of files you want to create in sequence, the script will create everything. 
 * Colour codes the output (ft. colorama) for you to differentiate between outputs. 
 * Let’s you use a custom separator if you’d like something apart from ‘-‘ hyphens in your file name. 
@@ -88,9 +89,9 @@ Warning: Files would be modified the moment they're made. Mistakes cannot be und
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | archetype   | Yes      | States archetype of post to be made.                                                                                                                                              |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| content     | No       | Lets you add matter to the "content" section of your markdown file.                                                                                                             |
+| content     | No       | Lets you add matter to the "content" section of your markdown file.                                                                                                               |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| filename    | No       | Lets you specify another filename if you don't want to use a 'sluggified' title. Please ensure you don't add '.md' to the filename and your file name has the proper separators.|
+| filename    | No       | Lets you specify another filename if you don't want to use a 'sluggified' title. Please ensure you don't add '.md' to the filename and your file name has the proper separators.  |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | title       | Yes      | Title field/filename.                                                                                                                                                             |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -103,9 +104,16 @@ Warning: Files would be modified the moment they're made. Mistakes cannot be und
 * Looking to values to your YAML without quotation marks? (Eg: true/false values) Prepend your value with *^* 
 
 
+TO DO
+------
+* Adding option to get image/file from a URL and downloading it straight into a specified folder. CSV Only.
+* TOML format support.
+
 Credits 
 ------- 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template. 
+
+* Color support via Colarama.
+* This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template. 
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter 
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage 

@@ -2,6 +2,12 @@
 History
 =======
 
+0.1.5 (2019-12-26)
+------------------
+* Fixed bug that stopped you from specifying a file name with separators within the name.
+* Updated display screenshot to reflect the above change.
+* Added do-it-live.sh file for ease of screenshot creation. Not added the same into dependencies. 
+
 0.1.4 (2019-12-13)
 ------------------
 * Fixed bug that stopped you from specifying a sequence.
