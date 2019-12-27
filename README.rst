@@ -115,7 +115,7 @@ Warning: Files would be modified the moment they're made. Mistakes cannot be und
     * Remember to remove any whitespace around your cell headings and values.
     * If the script doesn't work as expected, please check your archetype keys for typos/spaces as well.
 
-.. _`sample CSV attached within this repository`: https://github.com/hithismani/hugon/sample/data.csv 
+.. _`sample CSV attached within this repository`: https://github.com/hithismani/hugon/blob/master/sample/data.csv
 
 
 TO DO
