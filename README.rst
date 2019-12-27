@@ -1,14 +1,14 @@
-=====
-hugon
-=====
+=======================
+hugon (Hugo + Python)
+=======================
 
 
 .. image:: https://img.shields.io/pypi/v/hugon.svg
     :target: https://pypi.python.org/pypi/hugon
 
-An incredibly simple (CLI) python script that makes working with archetypes in Hugo 0.5x much easier. 
+An incredibly simple (CLI) python script that makes working with archetypes in Hugo 0.5x much easier. Also automates the process of bulk file creation via a single .csv!
 
-.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-single-file.gif
+.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/sample/hugon-single-file.gif
     :alt: Hugon Sample Run
 
 * Free software: MIT license
@@ -27,22 +27,25 @@ Features
 * Enter a string with as many special characters you wish to enter, the script will convert it into a suitable file name. Eg: "This new blog post I want to write!" in the command line would convert into "this-new-blog-post-i-want-to-write.md". 
 * Enter the archetype you wish to enter, the script will check if the archetype exists. If it doesn’t exist, Hugo CLI will prompt you with an error. 
 * Create multiple markdown files and automatically populate the variables + content fields from a local CSV! (YAML format front matter only) 
-* Let’s you use a custom prefix CLI if you’re using any other CLI that handshakes with hugo. Only changes prefix that could replace the "hugo new" function 
+* (NEW) Lets you download files from a link into a specific path within your project and aassign the values into your .md file! (CSV Only)
+* Lets you use a custom prefix CLI if you’re using any other CLI that handshakes with hugo. Only changes prefix that could replace the "hugo new" function 
 * Enter the amount of files you want to create in sequence, the script will create everything. 
 * Colour codes the output (ft. colorama) for you to differentiate between outputs. 
-* Let’s you use a custom separator if you’d like something apart from ‘-‘ hyphens in your file name. 
+* Lets you use a custom separator if you’d like something apart from ‘-‘ hyphens in your file name. 
+
 
 Requirements
 ------------
 * Python 3.x
 * Hugo CLI (Tested on 0.59.1)
+* Hugo Archetype specified within your project root directory
 
 How To Use (Normal)
 -------------------
 
 1) pip install hugon
 2) cd Into your hugo initialized folder.
-3) run the command 'hugon -name "N3w F!le" -arch "default" -sequence "5"
+3) run the command 'hugon -name "N3w F!le" -archetype "default" -sequence "5"
 
 Syntax (Normal)
 ---------------
@@ -79,7 +82,7 @@ How To Use (Generate From CSV)
 Syntax (CSV)
 ------------
 
-.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-csv.gif
+.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/sample/hugon-csv.gif
     :alt: Hugon Sample Run | CSV
 
 Warning: Files would be modified the moment they're made. Mistakes cannot be undone.
@@ -95,19 +98,35 @@ Warning: Files would be modified the moment they're made. Mistakes cannot be und
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | title       | Yes      | Title field/filename.                                                                                                                                                             |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| da-<key>    | No       | Download Anchorlink column that lets the script know that the value of the field is a download link. Must be followed by the key it assigns to. Eg: 'da-image'. Single use only.  |
++-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| path        | No(?)    | (Required if 'da-' is specified) Lets the script set the download location of the file specified above. Creates the folder if it doesn't exist.                                   |
++-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | prefix      | No       | Any custom build command you'd like to specify.                                                                                                                                   |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| separator   | No       | Any custom separator (if you're generating from title column) apart from default '-'                                                                                              |
+| separator   | No       | Any custom separator (if you're generating from title column) apart from default '-'.                                                                                             |
 +-------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-* Looking to add tags/taxonomies? Separate your values in the column with a *^;* 
-* Looking to values to your YAML without quotation marks? (Eg: true/false values) Prepend your value with *^* 
+* Looking to add tags/taxonomies? Separate your values in the column with a "^;" 
+* Looking to values to your YAML without quotation marks? (Eg: true/false values) Prepend your value with "^" 
+* Need line breaks within your 'content' cell? Specify them with a '\n' 
+* View `sample CSV attached within this repository`_ for more information.
+* Note: 
+    * Remember to remove any whitespace around your cell headings and values.
+    * If the script doesn't work as expected, please check your archetype keys for typos/spaces as well.
+
+.. _`sample CSV attached within this repository`: https://github.com/hithismani/hugon/sample/data.csv 
 
 
 TO DO
 ------
-* Adding option to get image/file from a URL and downloading it straight into a specified folder. CSV Only.
+
+* Adding option to input values from CSV. (Done!)
+* Adding option to get image/file from a URL and downloading it straight into a specified folder. CSV Only. (Done!)
+* Adding option to expand download functionality to allow for download of multiple files.
 * TOML format support.
+* Updating ReadMe Screenshots.
+* Fixing typos and grammatical errors in code + this readme doc. (Never ending :( )
 
 Credits 
 ------- 

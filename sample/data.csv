@@ -1,0 +1,3 @@
+filename,title,archetype,da-image,path,content
+welcome to hugon,First hugon generated post!,default,https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-single-file.gif,"static/images","Did this post get created?"
+,Second hugon generated post!,default,https://raw.githubusercontent.com/hithismani/hugon/master/images/hugon-single-file.gif,"static/images","Did this post get created? \n\n ### What about this heading? \n\n Please don't forget to report bugs on https://github.com/hithismani/hugon! ^_^"
