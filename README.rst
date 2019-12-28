@@ -1,12 +1,17 @@
 =======================
 hugon (Hugo + Python)
 =======================
-
-
+.. image:: https://raw.githubusercontent.com/hithismani/hugon/master/sample/header.jpg
+    :alt: Hugon Header Image
+    
 .. image:: https://img.shields.io/pypi/v/hugon.svg
     :target: https://pypi.python.org/pypi/hugon
 
 An incredibly simple (CLI) python script that makes working with archetypes in Hugo 0.5x much easier. Also automates the process of bulk file creation via a single .csv!
+
+Read `my medium post`_ for a quick idea of what this package does.
+
+.. _`my medium post`: https://medium.com/@helloitsmani/trying-to-speed-up-your-hugo-workflow-with-python-try-hugon-13e81cc32571
 
 .. image:: https://raw.githubusercontent.com/hithismani/hugon/master/sample/hugon-single-file.gif
     :alt: Hugon Sample Run
@@ -16,6 +21,7 @@ An incredibly simple (CLI) python script that makes working with archetypes in 
 Why
 ----
 
+
 * When working with archetypes, the CLI expects us to mention the exact file name we want to create, instead of converting a provided string into a valid file name. 
 * Inability to create a sequence of files (Example, creating an FAQ’s Markdown Page with faq-1.md, faq-2.md, faq-3.md file names). We’re expected to enter them manually each time. 
 * When working with projects that require us to create multiple markdown files, we can’t add more than the "title" field to our markdown files. 
@@ -24,28 +30,38 @@ Why
 Features 
 --------
 
-* Enter a string with as many special characters you wish to enter, the script will convert it into a suitable file name. Eg: "This new blog post I want to write!" in the command line would convert into "this-new-blog-post-i-want-to-write.md". 
+* Enter a string with as many special characters, watcht them be converted into a suitable file name. 
+
+    Eg: "This new blog post I want to write!" in the command line would convert into "this-new-blog-post-i-want-to-write.md". 
+
 * Enter the archetype you wish to enter, the script will check if the archetype exists. If it doesn’t exist, Hugo CLI will prompt you with an error. 
 * Create multiple markdown files and automatically populate the variables + content fields from a local CSV! (YAML format front matter only) 
 * (NEW) Lets you download files from a link into a specific path within your project and aassign the values into your .md file! (CSV Only)
 * Lets you use a custom prefix CLI if you’re using any other CLI that handshakes with hugo. Only changes prefix that could replace the "hugo new" function 
-* Enter the amount of files you want to create in sequence, the script will create everything. 
-* Colour codes the output (ft. colorama) for you to differentiate between outputs. 
+* Enter the amount of files you want to create in sequence, the script will create everything.  
 * Lets you use a custom separator if you’d like something apart from ‘-‘ hyphens in your file name. 
+* Colour codes the output (ft. colorama) for you to differentiate between outputs.
 
 
 Requirements
 ------------
 * Python 3.x
 * Hugo CLI (Tested on 0.59.1)
-* Hugo Archetype specified within your project root directory
+* Archetype file within your project root/theme archetype folder.
 
 How To Use (Normal)
 -------------------
 
-1) pip install hugon
-2) cd Into your hugo initialized folder.
-3) run the command 'hugon -name "N3w F!le" -archetype "default" -sequence "5"
+1. Install Hugon::
+
+    pip install hugon
+
+2) cd Into your hugo project folder.
+3) run the command::
+
+    hugon -name "N3w F!le" -archetype "default" -sequence "5"
+
+ 
 
 Syntax (Normal)
 ---------------
@@ -76,8 +92,12 @@ How To Use (Generate From CSV)
 -------------------------------
 1) Create a 'data.csv' file in the root of your hugo site.
 2) Enter all the required variable fields (along with the required compulsory fields) as columns on your first row, and populate to your hearts content.
-3) Run command 'hugon -csv yes'
-4) If you'd like to overwrite your files without being prompted (Risky) just pass '-overwrite true' as an argument.
+3) Run command::
+
+    hugon -csv yes
+4) If you'd like to overwrite your files without being prompted (Risky) just pass '-overwrite true' as an argument.::
+
+    hugon -csv yes -overwrite true
 
 Syntax (CSV)
 ------------
@@ -125,7 +145,6 @@ TO DO
 * Adding option to get image/file from a URL and downloading it straight into a specified folder. CSV Only. (Done!)
 * Adding option to expand download functionality to allow for download of multiple files.
 * TOML format support.
-* Updating ReadMe Screenshots.
 * Fixing typos and grammatical errors in code + this readme doc. (Never ending :( )
 
 Credits 
