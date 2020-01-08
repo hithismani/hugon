@@ -81,30 +81,36 @@ def print_to_file(csvfile,separator,overwrite):
         if "filename" in record:
             if len(record["filename"].strip()) > 0:
                 filename= record["filename"].strip().replace(" ",separator).replace(separator+separator,separator).replace(".md","")
-            elif "title" not in record or len(record["title"]) == 0:
-                print_message(Fore.RED, ("Cannot find filename (or title) values for one of your rows. Please check!"))
-                break
+            elif "title" not in record or len(record["title"].strip()) == 0:
+                print_message(Fore.RED, ("Cannot find filename (or title) values for one of your rows. Please check if all rows/columns have values in your CSV File! Skipping to next row."))
+                continue
             else:
-                filename= slugify(record["title"],separator)
+                filename= slugify(record["title"].strip(),separator)
         elif "filename" not in record and "title" not in record:
-            print_message(Fore.RED, ("Please specify either 'filename' or 'title' fields in csv file"))
-            break
+            print_message(Fore.RED, ("Please specify either 'filename' or 'title' fields for all rows in csv file"))
+            pass
         else:
-            filename= slugify(record["title"],separator)
+            filename= slugify(record["title"].strip(),separator)
         archetype = ""
-        if "archetype" in record:
+        if "archetype" in record and len(record["archetype"].strip())!=0:
             archetype = record["archetype"]
         else:
-            print_message(Fore.RED, ("Archetype not specified. Please supply an archetype in CSV or in Shell."))
-            break
+            print_message(Fore.RED, ("Archetype not specified for filename: "+filename))
+            continue
         if "separator" in record:
             separator = record["separator"]
         prefix = "hugo new "
         if "prefix" in record:
             prefix = record["prefix"].strip()+" "
         path = []
+        split_first = True #removes first folder from path when inserted into key/value pairing
         if "path" in record:
-            path_specified = record["path"].replace("\\","/").strip() #Homogenizing the structure of path (converts any '/'into '/')
+            path_specified = ""
+            if record["path"].startswith("?"):
+                split_first = False
+                path_specified = record["path"][1:].replace("\\","/").strip()
+            else:
+                path_specified = record["path"].replace("\\","/").strip() #Homogenizing the structure of path (converts any '/'into '/')
             for folder in path_specified.split("/"):
                 path.append(folder)
         proceed = True
@@ -127,18 +133,23 @@ def print_to_file(csvfile,separator,overwrite):
                         os.makedirs(download_folder)
                     download_path = join_folders([current_path, path ,file_name],os.sep)
                     if os.path.exists(download_path):
-                        confirmation = input("Download file " +download_folder+ " already exists. Should we still proceed/overwrite?  [y/n]")
-                        if "y" in confirmation.lower():
-                            os.remove(download_path)
-                            print_message(Fore.BLUE,("\nFile successfully removed. Proceeding to download."))
-                            urllib.request.urlretrieve(download_url, download_path)
-                        else:
-                            print_message(Fore.BLUE, ("\nFile Replacement Skipped."))
+                        if overwrite != "true":
+                            confirmation = input("Download file " +download_folder+ " already exists. Should we still proceed/overwrite?  [y/n]")
+                            if "y" in confirmation.lower():
+                                os.remove(download_path)
+                                print_message(Fore.BLUE,("\nFile successfully removed. Proceeding to download."))
+                                urllib.request.urlretrieve(download_url, download_path)
+                            else:
+                                print_message(Fore.BLUE, ("\nFile Replacement Skipped."))
                     else:
                         urllib.request.urlretrieve(download_url, download_path)
                     if os.path.exists(download_path):
                         key = key.replace("da-","").strip()
-                        value = join_folders([path ,file_name],'/')
+                        if split_first is True:
+                            path.pop(0)
+                            value = join_folders([path ,file_name],'/')
+                        else:
+                            value = join_folders([path ,file_name],'/')
                         print_message(Fore.GREEN, ("\nProceeding With File: '"+file_name+"' found in path "+download_path))
                     else:
                         print_message(Fore.RED, ("\nCould not find file: '"+file_name+"' in path"+download_path))
@@ -168,6 +179,7 @@ def print_to_file(csvfile,separator,overwrite):
                     for line in fileinput.input(join_folders([current_path,"content",archetype,((filename+".md"))],os.sep), inplace = 1):
                         line = re.sub(r'^'+key.strip()+r'\s*:.*',new_line, line.rstrip()) 
                         print(line)
+        
         
 
 def run(args):

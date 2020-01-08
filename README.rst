@@ -130,6 +130,7 @@ Warning: Files would be modified the moment they're made. Mistakes cannot be und
 * Looking to add tags/taxonomies? Separate your values in the column with a "^;" 
 * Looking to values to your YAML without quotation marks? (Eg: true/false values) Prepend your value with "^" 
 * Need line breaks within your 'content' cell? Specify them with a '\n' 
+* If you're using the "path" key, note that the script would add the path into your front matter by ommiting the first folder. Eg: "static/img/ex.jpg" would be inserted as "img/ex". If you'd like to retain the parent folder name in front matter, just add "?" to the beginning of the value in your CSV path field.
 * View `sample CSV attached within this repository`_ for more information.
 * Note: 
     * Remember to remove any whitespace around your cell headings and values.

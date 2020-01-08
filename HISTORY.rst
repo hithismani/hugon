@@ -2,6 +2,14 @@
 History
 =======
 
+0.1.7 (2020-08-01)
+------------------
+- Fixed Functionality:
+    - CSV would now "continue" to next row instead of earlier "break", if the values in the row are incorrect.
+    - By default, path field in front matter would remove the first folder. (Eg: "static/img/ex.jpg" would be saved into the static folder, but inserted into front matter as "img/ex.jpg")
+    - You can still retain parent folder in your front matter by adding "?" to the beginning of your path.
+- Tiny fixes and performance improvements.
+
 0.1.6 (2019-12-27)
 ------------------
 - Added new functionality:
